@@ -1,0 +1,120 @@
+You are a senior full-stack web developer.
+
+Build a complete full-stack course enrollment website for Indian engineering students.
+
+Website name: "EduEngineer"
+
+Target users:
+Engineering students (India)
+
+Currency:
+Indian Rupees (₹ INR)
+
+Tech Stack:
+Frontend: HTML, CSS, JavaScript
+Backend: Node.js with Express
+Database: SQLite
+Authentication: Email & password
+Payment Gateway: Razorpay (test mode)
+
+----------------------------------
+CORE FEATURES REQUIRED
+----------------------------------
+
+1. HOME PAGE
+- Hero section with headline: "Learn Industry-Ready Skills for Engineers"
+- Buttons: Browse Courses | Login | Register
+- Sections:
+  - Popular Courses
+  - Why Choose Us
+  - Student Benefits
+  - Footer with links
+
+2. COURSES PAGE
+- Display all courses in card format
+- Each course card includes:
+  - Course Name
+  - Short Description
+  - Price in ₹
+  - Duration
+  - Enroll Button
+
+Courses to include:
+- Java Programming
+- Python Programming
+- C & C++
+- Data Structures & Algorithms
+- Web Development
+- Machine Learning
+- SQL & Databases
+
+3. COURSE DETAILS PAGE
+- Full course description
+- Syllabus (list format)
+- Instructor name
+- Course price in INR
+- "Enroll Now" button
+
+4. AUTHENTICATION SYSTEM
+- Signup page (Name, Email, Password)
+- Login page (Email, Password)
+- Password stored securely
+- Session-based authentication
+
+5. STUDENT DASHBOARD
+- Show logged-in student name
+- Enrolled courses list
+- Payment status
+- Logout button
+
+6. PAYMENT SYSTEM
+- Razorpay integration (test mode)
+- Payment in Indian Rupees
+- On successful payment:
+  - Save enrollment in database
+  - Show success message
+- On failure:
+  - Show error message
+
+7. ADMIN PANEL (Simple)
+- Admin login
+- Add new courses
+- Edit/delete courses
+- View enrolled students
+
+----------------------------------
+BACKEND REQUIREMENTS
+----------------------------------
+- REST APIs for:
+  - User registration & login
+  - Course listing
+  - Course enrollment
+  - Payment verification
+- SQLite database tables:
+  - users
+  - courses
+  - enrollments
+- Proper folder structure:
+  /public
+  /routes
+  /database
+  server.js
+
+----------------------------------
+UI REQUIREMENTS
+----------------------------------
+- Clean modern UI
+- Responsive design
+- Student-friendly colors
+- Cards, buttons, navbar
+- Indian ed-tech style layout
+
+----------------------------------
+EXTRA
+----------------------------------
+- Add sample course data
+- Add comments in code
+- Make sure project runs properly on Replit
+- Use clear file separation
+
+Generate complete working code.
