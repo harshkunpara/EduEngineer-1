@@ -73,10 +73,27 @@ export async function registerRoutes(
     }
   });
 
+  // Email domain validation
+  const fakeDomains = ["example.com", "example.org", "example.net", "test.com", "fake.com", "dummy.com"];
+  const isValidEmailDomain = (email: string) => {
+    const domain = email.split("@")[1]?.toLowerCase();
+    if (!domain) return false;
+    return !fakeDomains.includes(domain);
+  };
+
   // Auth Routes
   app.post(api.auth.register.path, async (req, res) => {
     try {
       const input = api.auth.register.input.parse(req.body);
+      
+      // Validate email domain
+      if (!isValidEmailDomain(input.email)) {
+        return res.status(400).json({ 
+          message: "Please enter a valid email address (example: yourname@gmail.com).",
+          field: "email"
+        });
+      }
+
       const existingUser = await storage.getUserByEmail(input.email);
       if (existingUser) {
         return res.status(400).json({ message: "Email already registered" });

@@ -13,14 +13,26 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2, GraduationCap } from "lucide-react";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 
+const fakeDomains = ["example.com", "example.org", "example.net", "test.com", "fake.com", "dummy.com"];
+
+const validateEmailDomain = (email: string) => {
+  const domain = email.split("@")[1]?.toLowerCase();
+  if (!domain) return false;
+  return !fakeDomains.includes(domain);
+};
+
 const loginSchema = z.object({
-  username: z.string().min(1, "Email is required"),
+  username: z.string().min(1, "Email is required").email("Invalid email format").refine(validateEmailDomain, {
+    message: "Please enter a valid email address (example: yourname@gmail.com).",
+  }),
   password: z.string().min(1, "Password is required"),
 });
 
 const registerSchema = z.object({
   name: z.string().min(1, "Name is required"),
-  email: z.string().min(1, "Email is required"),
+  email: z.string().min(1, "Email is required").email("Invalid email format").refine(validateEmailDomain, {
+    message: "Please enter a valid email address (example: yourname@gmail.com).",
+  }),
   password: z.string().min(1, "Password is required"),
 });
 
@@ -89,7 +101,7 @@ export default function AuthPage() {
                         <FormItem>
                           <Label>Email</Label>
                           <FormControl>
-                            <Input placeholder="student@example.com" type="email" {...field} />
+                            <Input placeholder="yourname@gmail.com" type="email" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -147,7 +159,7 @@ export default function AuthPage() {
                         <FormItem>
                           <Label>Email</Label>
                           <FormControl>
-                            <Input placeholder="student@example.com" type="email" {...field} />
+                            <Input placeholder="yourname@gmail.com" type="email" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -175,7 +187,7 @@ export default function AuthPage() {
               </CardContent>
               <CardFooter className="bg-muted/50 border-t px-6 py-4">
                 <p className="text-xs text-muted-foreground text-center w-full">
-                  You can use any name, email, and password for learning purposes.
+                  Use a valid email domain (gmail.com, yahoo.com, outlook.com, etc.)
                 </p>
               </CardFooter>
             </Card>
