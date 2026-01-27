@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Trophy, Users, Briefcase } from "lucide-react";
+import { ArrowRight, CheckCircle2, Trophy, Users, Briefcase, Star, GraduationCap } from "lucide-react";
 import { useCourses } from "@/hooks/use-courses";
 import { CourseCard } from "@/components/CourseCard";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -65,19 +65,24 @@ export default function Home() {
                 </Link>
               </div>
               
-              <div className="flex items-center gap-8 pt-4">
-                <div className="flex -space-x-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="h-10 w-10 rounded-full border-2 border-background bg-muted overflow-hidden">
-                       <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i}`} alt="User" />
-                    </div>
-                  ))}
+              <div className="flex flex-wrap items-center gap-6 pt-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <Star className="h-5 w-5 text-amber-500 fill-amber-500" />
+                  <span className="font-bold">4.7 / 5 rating</span>
                 </div>
-                <div className="text-sm">
-                  <p className="font-bold">10,000+ Students</p>
-                  <p className="text-muted-foreground">trust EduEngineer</p>
+                <div className="flex items-center gap-2">
+                  <Users className="h-5 w-5 text-primary" />
+                  <span className="font-bold">12,000+ students learning</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <GraduationCap className="h-5 w-5 text-green-500" />
+                  <span className="font-bold">Certificate of Completion</span>
                 </div>
               </div>
+              
+              <p className="text-sm text-muted-foreground border-l-2 border-primary pl-3 italic">
+                Trusted by thousands of engineering students across India.
+              </p>
             </motion.div>
 
             <motion.div 

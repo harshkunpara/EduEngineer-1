@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle, Clock, Globe, IndianRupee, Loader2, ShieldCheck, User } from "lucide-react";
+import { CheckCircle, Clock, Globe, IndianRupee, Loader2, ShieldCheck, User, Star, Users, Award } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { useToast } from "@/hooks/use-toast";
 
@@ -74,6 +74,25 @@ export default function CourseDetails() {
                   <span>Last updated: <span className="font-semibold">Last Month</span></span>
                 </div>
               </div>
+              
+              <div className="flex flex-wrap items-center gap-4 pt-2 text-sm bg-muted/50 rounded-lg p-4">
+                <div className="flex items-center gap-2">
+                  <Star className="h-5 w-5 text-amber-500 fill-amber-500" />
+                  <span className="font-bold">4.7 / 5 rating</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Users className="h-5 w-5 text-primary" />
+                  <span className="font-bold">12,000+ students</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Award className="h-5 w-5 text-green-500" />
+                  <span className="font-bold">Certificate of Completion</span>
+                </div>
+              </div>
+              
+              <p className="text-xs text-muted-foreground italic">
+                Trusted by thousands of engineering students across India.
+              </p>
             </div>
 
             {/* Sticky Enrollment Card */}

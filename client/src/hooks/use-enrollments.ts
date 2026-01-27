@@ -1,7 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "@shared/routes";
 import { useToast } from "@/hooks/use-toast";
-import useRazorpay, { RazorpayOptions } from "react-razorpay";
 import { useAuth } from "./use-auth";
 
 export function useEnrollments() {
@@ -19,7 +18,6 @@ export function useEnrollments() {
 export function useEnrollAndPay() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
-  const [Razorpay] = useRazorpay();
   const { user } = useAuth();
 
   const verifyPaymentMutation = useMutation({
@@ -55,7 +53,6 @@ export function useEnrollAndPay() {
 
   return useMutation({
     mutationFn: async ({ courseId, amount }: { courseId: number; amount: number }) => {
-      // 1. Create Pending Enrollment
       const res = await fetch(api.enrollments.create.path, {
         method: api.enrollments.create.method,
         headers: { "Content-Type": "application/json" },
@@ -69,42 +66,21 @@ export function useEnrollAndPay() {
       
       const enrollment = api.enrollments.create.responses[201].parse(await res.json());
 
-      // 2. Open Razorpay (Test Mode)
-      return new Promise<void>((resolve, reject) => {
-        const options: RazorpayOptions = {
-          key: "rzp_test_12345678901234", // Dummy Key for Demo
-          amount: amount * 100, // Amount in paise
-          currency: "INR",
-          name: "EduEngineer",
-          description: "Course Enrollment",
-          image: "https://example.com/logo.png",
-          order_id: "", // In real app, create order on backend first
-          handler: (response) => {
-            // 3. Verify Payment
-            verifyPaymentMutation.mutate({
-              enrollmentId: enrollment.id,
-              razorpayPaymentId: response.razorpay_payment_id,
-              razorpayOrderId: response.razorpay_order_id || "dummy_order",
-              razorpaySignature: response.razorpay_signature || "dummy_sig",
-            });
-            resolve();
-          },
-          prefill: {
-            name: user?.name || "",
-            email: user?.email || "",
-            contact: "9999999999",
-          },
-          theme: {
-            color: "#3399cc",
-          },
-        };
+      // Demo: Simulate payment with confirmation dialog
+      const confirmed = window.confirm(
+        `Demo Payment: ₹${amount.toLocaleString("en-IN")}\n\nThis is a test mode simulation.\nClick OK to simulate successful payment.`
+      );
 
-        const rzp1 = new Razorpay(options);
-        rzp1.on("payment.failed", function (response: any) {
-          reject(new Error(response.error.description));
+      if (confirmed) {
+        await verifyPaymentMutation.mutateAsync({
+          enrollmentId: enrollment.id,
+          razorpayPaymentId: `pay_demo_${Date.now()}`,
+          razorpayOrderId: `order_demo_${Date.now()}`,
+          razorpaySignature: `sig_demo_${Date.now()}`,
         });
-        rzp1.open();
-      });
+      } else {
+        throw new Error("Payment cancelled by user");
+      }
     },
     onError: (error: Error) => {
       toast({

@@ -202,7 +202,7 @@ export async function registerRoutes(
     });
     await storage.createCourse({
       title: "Python for Data Science",
-      description: "Master Python and libraries like NumPy, Pandas, and Matplotlib.",
+      description: "Master Python and libraries like NumPy, Pandas, and Matplotlib for data analysis.",
       price: 3499,
       duration: "35 Hours",
       instructor: "Rahul Verma",
@@ -210,8 +210,8 @@ export async function registerRoutes(
       category: "Data Science",
     });
     await storage.createCourse({
-      title: "Web Development Bootcamp",
-      description: "Become a Full Stack Developer with MERN Stack.",
+      title: "Full Stack Web Development",
+      description: "Become a Full Stack Developer with the complete MERN Stack bootcamp.",
       price: 4999,
       duration: "60 Hours",
       instructor: "Sandeep Singh",
@@ -220,12 +220,111 @@ export async function registerRoutes(
     });
     await storage.createCourse({
       title: "Data Structures & Algorithms",
-      description: "Ace your coding interviews with DSA in C++.",
+      description: "Ace your coding interviews with comprehensive DSA in C++ and Java.",
       price: 3999,
       duration: "50 Hours",
       instructor: "Amit Patel",
       syllabus: ["Arrays & Strings", "Linked Lists", "Trees & Graphs", "Dynamic Programming", "Greedy Algorithms"],
       category: "Computer Science",
+    });
+    await storage.createCourse({
+      title: "C & C++ Programming",
+      description: "Master C and C++ programming languages from basics to advanced concepts.",
+      price: 2499,
+      duration: "45 Hours",
+      instructor: "Prof. Suresh Kumar",
+      syllabus: ["C Fundamentals", "Pointers & Memory", "C++ OOP", "STL Library", "File Handling"],
+      category: "Programming",
+    });
+    await storage.createCourse({
+      title: "React JS Complete Guide",
+      description: "Build modern web applications with React, Hooks, Redux, and Next.js.",
+      price: 3299,
+      duration: "38 Hours",
+      instructor: "Priya Nair",
+      syllabus: ["React Basics", "Hooks & Context", "Redux Toolkit", "React Router", "Next.js"],
+      category: "Web Development",
+    });
+    await storage.createCourse({
+      title: "Node.js Backend Development",
+      description: "Build scalable backend applications with Node.js, Express, and databases.",
+      price: 3199,
+      duration: "32 Hours",
+      instructor: "Vikram Reddy",
+      syllabus: ["Node.js Basics", "Express Framework", "REST APIs", "Authentication", "Database Integration"],
+      category: "Web Development",
+    });
+    await storage.createCourse({
+      title: "Machine Learning with Python",
+      description: "Learn ML algorithms, Scikit-Learn, TensorFlow and build AI projects.",
+      price: 5499,
+      duration: "55 Hours",
+      instructor: "Dr. Meera Iyer",
+      syllabus: ["ML Fundamentals", "Supervised Learning", "Unsupervised Learning", "Neural Networks", "Real Projects"],
+      category: "Data Science",
+    });
+    await storage.createCourse({
+      title: "SQL & Database Management",
+      description: "Master SQL, MySQL, PostgreSQL and database design principles.",
+      price: 2299,
+      duration: "28 Hours",
+      instructor: "Ramesh Gupta",
+      syllabus: ["SQL Basics", "Joins & Subqueries", "Database Design", "Performance Tuning", "NoSQL Introduction"],
+      category: "Computer Science",
+    });
+    await storage.createCourse({
+      title: "Cyber Security Fundamentals",
+      description: "Learn ethical hacking, network security, and protect systems from threats.",
+      price: 4499,
+      duration: "42 Hours",
+      instructor: "Arjun Menon",
+      syllabus: ["Security Basics", "Network Security", "Ethical Hacking", "Cryptography", "Security Tools"],
+      category: "Computer Science",
+    });
+    await storage.createCourse({
+      title: "Cloud Computing with AWS",
+      description: "Master Amazon Web Services - EC2, S3, Lambda, and cloud architecture.",
+      price: 4999,
+      duration: "48 Hours",
+      instructor: "Neha Saxena",
+      syllabus: ["Cloud Fundamentals", "EC2 & S3", "Lambda & Serverless", "DevOps on AWS", "Certification Prep"],
+      category: "Cloud",
+    });
+    await storage.createCourse({
+      title: "DevOps Engineering",
+      description: "Learn CI/CD, Docker, Kubernetes, Jenkins and modern DevOps practices.",
+      price: 4799,
+      duration: "45 Hours",
+      instructor: "Karthik Srinivasan",
+      syllabus: ["DevOps Basics", "Docker & Containers", "Kubernetes", "CI/CD Pipelines", "Monitoring"],
+      category: "Cloud",
+    });
+    await storage.createCourse({
+      title: "Artificial Intelligence Essentials",
+      description: "Understand AI concepts, neural networks, NLP and computer vision.",
+      price: 5999,
+      duration: "52 Hours",
+      instructor: "Dr. Lakshmi Rao",
+      syllabus: ["AI Fundamentals", "Deep Learning", "NLP Basics", "Computer Vision", "AI Ethics"],
+      category: "Data Science",
+    });
+    await storage.createCourse({
+      title: "Android App Development",
+      description: "Build Android apps with Kotlin, Jetpack Compose and publish to Play Store.",
+      price: 3799,
+      duration: "44 Hours",
+      instructor: "Mohammed Ismail",
+      syllabus: ["Kotlin Basics", "Android Studio", "Jetpack Compose", "APIs & Firebase", "Publishing"],
+      category: "Mobile Development",
+    });
+    await storage.createCourse({
+      title: "Java Advanced - Spring Boot",
+      description: "Enterprise Java development with Spring Boot, Microservices and REST APIs.",
+      price: 4299,
+      duration: "40 Hours",
+      instructor: "Sanjay Deshmukh",
+      syllabus: ["Spring Core", "Spring Boot", "REST APIs", "Microservices", "Spring Security"],
+      category: "Programming",
     });
   }
 

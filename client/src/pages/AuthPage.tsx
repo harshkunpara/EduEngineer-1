@@ -14,7 +14,13 @@ import { Loader2, GraduationCap } from "lucide-react";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 
 const loginSchema = z.object({
-  username: z.string().email("Please enter a valid email"),
+  username: z.string().min(1, "Email is required"),
+  password: z.string().min(1, "Password is required"),
+});
+
+const registerSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().min(1, "Email is required"),
   password: z.string().min(1, "Password is required"),
 });
 
@@ -44,7 +50,7 @@ export default function AuthPage() {
   });
 
   const registerForm = useForm({
-    resolver: zodResolver(insertUserSchema),
+    resolver: zodResolver(registerSchema),
     defaultValues: { name: "", email: "", password: "" },
   });
 
@@ -167,6 +173,11 @@ export default function AuthPage() {
                   </form>
                 </Form>
               </CardContent>
+              <CardFooter className="bg-muted/50 border-t px-6 py-4">
+                <p className="text-xs text-muted-foreground text-center w-full">
+                  You can use any name, email, and password for learning purposes.
+                </p>
+              </CardFooter>
             </Card>
           </TabsContent>
         </Tabs>
